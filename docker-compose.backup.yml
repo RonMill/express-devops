@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  express-devops:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - PORT=3000
+    # env_file:
+    #   - ./.env
+
+#docker-compose up -d 
+#docker-compose down -v --> löscht anonyme volumes

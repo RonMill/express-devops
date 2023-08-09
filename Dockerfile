@@ -1,11 +1,17 @@
 FROM node:15
 WORKDIR /app
 COPY package.json .
-RUN npm install
+#unterscheidet zwischen dev und prodmode
+ARG NODE_ENV
+RUN echo "NODE_ENV=${NODE_ENV}"
+RUN if [ "$NODE_ENV" = "development" ]; \
+        then npm install; \
+        else npm install --only=production; \
+        fi
 COPY . . 
 # ENV PORT 3000
 EXPOSE $PORT
-CMD ["npm", "run", "dev"]
+CMD ["node", "index.js"]
 
 #docker build -t express-devops-image .
 #docker rm express-devops -f #v löscht auch die anonymen volumes die wir immer erzeugen beim docker run

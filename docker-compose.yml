@@ -1,16 +1,11 @@
-version: "3.8"
+version: '3.8'
 services:
   express-devops:
     build: .
     ports:
-      - "3000:3000"
-    volumes:
-      - ./:/app
-      - /app/node_modules
+      - '3000:3000'
     environment:
       - PORT=3000
-    # env_file:
-    #   - ./.env
 
-#docker-compose up -d 
-#docker-compose down -v --> löscht anonyme volumes
+#devmode: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+#prodmode: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build --> build damit das image auch neu gebaut wird
