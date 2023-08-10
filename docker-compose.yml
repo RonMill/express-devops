@@ -1,21 +1,28 @@
 version: '3.8'
 services:
   express-devops:
+    container_name: express
     build: .
     ports:
       - '3000:3000'
     environment:
       - PORT=3000
+    depends_on: # bewirkt das mongo zuerst startet 
+      - mongo
 
   mongo:
+    container_name: mongo
     image: mongo:4.4.4
     environment:
       - MONGO_INITDB_ROOT_USERNAME=herbert
       - MONGO_INITDB_ROOT_PASSWORD=herbert
     volumes:
       - mongo_db:/data/db
+
 volumes:
  mongo_db:
+
+
 #devmode: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 #prodmode: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build --> build damit das image auch neu gebaut wird
 # docker exec -it express-devops-mongo-1 mongo -u "herbert" -p "herbert"

@@ -10,4 +10,15 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - MONGO_USER=herbert
+      - MONGO_PASSWORD=herbert
     command: npm run dev
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.4
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=herbert
+      - MONGO_INITDB_ROOT_PASSWORD=herbert
+    volumes:
+      - mongo_db:/data/db
