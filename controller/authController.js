@@ -23,7 +23,10 @@ exports.signUp = async (req, res, next) => {
 }
 
 exports.login = async (req, res) => {
+  const sess = req.session;
   const { username, password } = req.body
+  // sess.username = username
+  // sess.password = password
   try {
     const user = await User.findOne({ username })
     if (!user) {
@@ -48,4 +51,15 @@ exports.login = async (req, res) => {
       status: 'fail'
     })
   }
+}
+
+exports.logout = async (req, res) =>{
+  req.session.destroy(err =>{
+    if(err){
+      return console.log(err)
+    }
+    res.status(200).json({
+      status: 'success'
+    })
+  })
 }
