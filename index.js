@@ -5,6 +5,8 @@ const session = require('express-session');
 const redis = require('redis')
 const connectRedis = require('connect-redis')
 
+const MINUTE = 60*1000
+const SECOUND = 1000
 
 const { MONGO_USER, MONGO_PASSWORD, MONOG_IP, MONGO_PORT, REDIS_URL, REDIS_PORT, SESSION_SECRET } = require('./config/config');
 
@@ -52,7 +54,7 @@ app.use(session({
   cookie: {
       secure: false, // if true only transmit cookie over https
       httpOnly: true, // if true prevent client side JS from reading the cookie 
-      maxAge: 50000 // session max age in miliseconds
+      maxAge: SECOUND * 30 // session max age in miliseconds
   }
 }))
 

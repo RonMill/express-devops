@@ -9,6 +9,7 @@ exports.signUp = async (req, res, next) => {
       username: username,
       password: hashpassword
     })
+    req.session.user = newUser
     res.status(200).json({
       status: 'success',
       data: {
@@ -25,8 +26,6 @@ exports.signUp = async (req, res, next) => {
 exports.login = async (req, res) => {
   const sess = req.session;
   const { username, password } = req.body
-  // sess.username = username
-  // sess.password = password
   try {
     const user = await User.findOne({ username })
     if (!user) {
@@ -37,6 +36,8 @@ exports.login = async (req, res) => {
     }
     const isCorrect = await bcrypt.compare(password, user.password)
     if (isCorrect) {
+      //if login success save userdata in session 
+      req.session.user = user
       res.status(200).json({
         status: 'success'
       })
