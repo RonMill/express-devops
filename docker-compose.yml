@@ -30,6 +30,7 @@ volumes:
 
 #devmode: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 #prodmode: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build --> build damit das image auch neu gebaut wird
+# docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale express-devops=2 -V --build
 # docker exec -it express-devops-mongo-1 mongo -u "herbert" -p "herbert"
 # volumes: bind irgendwas mit punkt und ein pfad auf unserem system --> siehe ./:/app
 # anonymes volume /app/node_modules --> named volume mongo_db:/data/db
