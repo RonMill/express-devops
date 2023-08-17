@@ -6,7 +6,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
   express-devops:
-    
+
     build: .
     environment:
       - PORT=3000
@@ -16,9 +16,6 @@ services:
   mongo:
     container_name: mongo
     image: mongo:4.4.4
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=herbert
-      - MONGO_INITDB_ROOT_PASSWORD=herbert
     volumes:
       - mongo_db:/data/db
   redis:
