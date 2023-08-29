@@ -6,8 +6,9 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
   express-devops:
-
     build: .
+    # damit die prod umgebung das nicht bauen muss sondern von dockerhub ziehen kann
+    image: herbybrick/express-devops
     environment:
       - PORT=3000
     depends_on: # bewirkt das mongo zuerst startet 
