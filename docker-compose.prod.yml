@@ -18,3 +18,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+
+# Im Prod Mode werden Änderungen neu von zB github gepulled und mit docker-compose up -d --build neu gebaut 
+# allerdings müssen wir ja nicht alles neu bauen mit nacfolgemden befehl kann nur das image neu gebaut werden was auch geändert wurde 
+# ``docker-compose up -d --build express-devops`` hat express-devops irgendwelche dependencies kann man die vom neubauen ausschließen mit --no-deps
