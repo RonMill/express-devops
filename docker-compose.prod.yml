@@ -36,3 +36,11 @@ services:
 # gleiches gilt für docker-compose push --> docker-compose -f docker-compose.yml -f .\docker-compose.prod.yml push --> alles was sich nicht geändert hat wird geskipped
 # bei änderung nur ein pull reicht nicht es muss vorher gebaut werden
 # auf dem server: docker-compose pull --> wenn private repository muss vorher eingelogged sein
+
+# docker swarm 
+# im docker-compose file die deploy sektion hinzugefügt
+# git push
+# docker-compose down 
+# docker stack deploy -c docker-compose.yml name
+# liste swarm nodes -> docker node ls
+# docker stack ls
